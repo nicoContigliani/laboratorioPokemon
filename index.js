@@ -3,6 +3,7 @@
 const url = "https://pokeapi.co/api/v2/pokemon/";
 
 const idPokemons = [];
+const capturados = [];
 
 var btnAceptar = document.getElementById("listar");
 var disableButton = function () { this.disabled = true; };
@@ -14,6 +15,19 @@ const insertNamess = [];
 const insertTypess = [];
 const insertImagen = [];
 const listaHabilidades = "";
+
+
+
+(() => {
+   
+    // while (capturados.length < 7) {
+    //     console.log(text)
+
+
+    //   }       
+
+})();
+
 
 
 (() => {
@@ -65,7 +79,17 @@ const listaHabilidades = "";
     formulario.addEventListener('keyup', filtrar);
     /// filtrar()
 
-})()
+})();
+
+
+
+
+
+
+
+
+
+
 
 const buscarRed = async (texto) => {
     alert(texto)
@@ -211,10 +235,30 @@ const tm = async () => {
 }
 
 const capturar =async(value) =>{
+
+
+    
  await alert(value)
+ const response = await axios.get(`${url}${value}`);
+ const name=response.data.forms[0].name;
+ const experience = response.data.base_experience;
 
- 
+ response.data.types.forEach(types =>insertTypess.push(`${types.type.name}`))
+const type  = insertTypess.join(",")
+console.log(type)
+
+response.data.abilities.forEach(ability => insertAbilitiess.push`${ability.ability.name}`)
+const abilities  = insertAbilitiess.join("");
+console.log(abilities)
 
 
+
+
+ console.log(`${name} /// ${experience} /// ${type} ///${abilities}`)
+ capturados.push(value);
+
+// capturados.forEach(element=>{
+//     console.log(element)
+// })
 
 }
