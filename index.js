@@ -283,32 +283,6 @@ const capturar = async (value) => {
     console.log(`${name} /// ${experience} /// ${type} ///${abilities}`)
     capturados.push(value);
 
-    //aca voy a bloquear botones 
-    bloquear(value)
-
-    // capturados.forEach(element=>{
-    //     console.log(element)
-    // })
 
 }
 
-
-
-((value) => {
-
-
-
-
-})();
-const bloquear = (value) => {
-
-    alert("ehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
-
-
-
-
-
-
-    // desabilitar.value="disabled"
-    // boton.setAttributeNode(desabilitar)
-}
