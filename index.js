@@ -4,6 +4,7 @@ const url = "https://pokeapi.co/api/v2/pokemon/";
 
 const idPokemons = [];
 const capturados = [];
+const contadorr = [];
 
 
 
@@ -21,15 +22,6 @@ const listaHabilidades = "";
 
 
 
-(() => {
-
-    // while (capturados.length < 7) {
-    //     console.log(text)
-
-
-    //   }       
-
-})();
 
 
 
@@ -282,7 +274,14 @@ const capturar = async (value) => {
     /// aca se pincha la base ..... 
     console.log(`${name} /// ${experience} /// ${type} ///${abilities}`)
     capturados.push(value);
-
+    contador(value)
 
 }
+const contador = (value) => {
+    alert("1")
+    contadorr.push(1)
+    if (contadorr.length < 7) {
+        alert("7")
+    }
 
+}
