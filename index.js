@@ -19,6 +19,7 @@ const insertNamess = [];
 const insertTypess = [];
 const insertImagen = [];
 const listaHabilidades = "";
+const bloquearTodos=[];
 
 
 
@@ -75,14 +76,6 @@ const listaHabilidades = "";
     /// filtrar()
 
 })();
-
-
-
-
-
-
-
-
 
 
 
@@ -153,7 +146,6 @@ const pAbilities = async (data, id) => {
 
 
 
-
     let cardd = document.createElement("div")
     var att = document.createAttribute("class");
     att.value = "card";
@@ -197,19 +189,30 @@ const pAbilities = async (data, id) => {
     var identidad = document.createAttribute("id");
     var desabilitar = document.createAttribute("disabled")
     var nameatt = document.createAttribute("name");
-
-
-
+    
+ 
 
     att.value = `btn btn-outline-secondary `;
     boton.setAttributeNode(att);
 
-    attr.value = `capturar(value);  ((att) => {
-        var att = document.createAttribute("class");
 
-        alert("pasa")
+    attr.value = `capturar(value); ((att) => {
+        var att = document.createAttribute("class");
+ 
+        alert("pasa");
+      
        att.value =  this.disabled = true ;
-    })()`;
+    })();
+    ((att) => {
+        var att = document.createAttribute("class");
+        if(bloquearTodos.length==6){ 
+            var att = document.createAttribute("class");
+            att.value =  this.disabled = true ; }else{ 
+          
+            alert("sin bloquear");
+        }
+
+    })();`;
     // boton.setAttributeNode(attrB);
 
     boton.setAttributeNode(attr);
@@ -238,12 +241,9 @@ const pAbilities = async (data, id) => {
 
 
 
+
     document.body.appendChild(boton);
 
-
-
-
-    // document.getElementById("demo").appendChild(boton);
 
 }
 
@@ -255,8 +255,6 @@ const tm = async () => {
 }
 
 const capturar = async (value) => {
-
-
 
     await alert(value)
     const response = await axios.get(`${url}${value}`);
@@ -271,17 +269,64 @@ const capturar = async (value) => {
     const abilities = insertAbilitiess.join("");
     console.log(abilities)
 
+
+    const id = response.data.id;
+    const img = response.data.sprites.front_default;
+
     /// aca se pincha la base ..... 
-    console.log(`${name} /// ${experience} /// ${type} ///${abilities}`)
-    capturados.push(value);
+    console.log(`${id} /// ${name} /// ${experience} /// ${type} ///${abilities}///${img}`)
+
+    capturados.push({id:`${id}`, name:`${name}`,experience:`${experience}`,type:`${type}`,abilities:`${abilities}`,imagen:`${img}`});
+
     contador(value)
 
 }
+//divModal.innerHTML="";
 const contador = (value) => {
     alert("1")
     contadorr.push(1)
-    if (contadorr.length < 7) {
-        alert("7")
+    bloquearTodos.push(1)
+    // alert(bloquearTodos.length)
+
+
+    
+    if (contadorr.length <6 ) {
+        //alert(contadorr.length)
+   
+        
+    } else {
+        alert("ya son 6")
+        var divModal = document.createElement("div");
+        document.body.appendChild(divModal);
+        divModal.innerHTML ==""
+      
+        var i = 0;
+        var text = "";
+        while (capturados[i]) {
+
+            alert("Id: "+ capturados[i].id+"   "+"nombre: "+capturados[i].name  + "    capturados totales: "+capturados.length )
+            i++;
+ 
+     
+        }
+
+    
+
     }
 
+
+
+
 }
+// function savePokemon(id) {
+//     axios.post(`http://localhost:4000/pokemon/${id}`).then(response => {
+//          const { data } = response;
+//          if (!data.status) {
+             
+//          } else 
+         
+//          alert('Pokemon Guardado')
+
+//     })
+
+// }

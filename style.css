@@ -134,3 +134,38 @@ body {
 	border-bottom: 3px solid darkred;
 	color: darkred;
 }
+
+
+
+.flotante {
+	background: rgba(104, 195, 255, 0.5);
+	position:fixed;
+	z-index:1000;
+	top:0;
+	max-width:3000px;
+	width:100%;
+	border-radius: 10px;
+	box-shadow:0px 4px 3px rgba(160, 160, 160, 0.8);
+
+}
+/* .modal{
+	position: relative;
+} */
+#lista1 li {
+
+
+	display:inline;
+	top:0;
+	padding-left:15px;
+	padding-right:15px;
+	width:100%;
+
+
+
+
+
+}
+
+span {
+    color:white;
+    text-decoration:none;}
