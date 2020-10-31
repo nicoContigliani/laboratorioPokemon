@@ -1,10 +1,13 @@
-
-
 const url = "https://pokeapi.co/api/v2/pokemon/";
 
 const idPokemons = [];
 const capturados = [];
 const contadorr = [];
+const insertAbilitiess = []
+const insertNamess = [];
+const insertTypess = [];
+const insertImagen = [];
+const listaHabilidades = "";
 
 
 
@@ -12,18 +15,6 @@ const contadorr = [];
 var btnAceptar = document.getElementById("listar");
 var disableButton = function () { this.disabled = true; };
 btnAceptar.addEventListener('click', disableButton, false);
-
-
-const insertAbilitiess = []
-const insertNamess = [];
-const insertTypess = [];
-const insertImagen = [];
-const listaHabilidades = "";
-const bloquearTodos=[];
-
-
-
-
 
 
 (() => {
@@ -38,7 +29,7 @@ const bloquearTodos=[];
     
     `;
 
-    document.getElementById("demoo").appendChild(searchBoxContainer);
+    document.getElementById("main").appendChild(searchBoxContainer);
 
     const formulario = document.querySelector('#formulario');
     const boton = document.querySelector('#boton');
@@ -107,7 +98,7 @@ const mostrar = async (id, nombre) => {
         if (id == element.id && nombre == element.nombre) {
             alert("esta insertado");
             //   console.log(`id :${element.id}, nombre: ${element.nombre}`)  ;
-            resultado.innerHTML = `Esta insertado  id :${element.id}, nombre: ${element.nombre}   <button type="button" class="btn btn-outline-primary" >Capturar</button>  `
+            resultado.innerHTML = `Esta insertado  id :${element.id}, nombre: ${element.nombre}   <button type="button" class="btn btn-outline-primary" onclick="capturar(${element.id})" >Capturar</button>  `
 
         } else {
             // alert(`${id} y ${element.id} ---   ${nombre} y ${element.nombre}     `);       
@@ -136,6 +127,10 @@ const getPokemons = async () => {
 
 const pAbilities = async (data, id) => {
     //   data.abilities.forEach(ability=> console.log((id,ability.ability.name)) )
+
+
+
+
     let name = document.createElement("h2");
     let experiencia = document.createElement("li");
 
@@ -146,9 +141,12 @@ const pAbilities = async (data, id) => {
 
 
 
+    // var cardSelector = document.getElementById("main2");
+
+
     let cardd = document.createElement("div")
     var att = document.createAttribute("class");
-    att.value = "card";
+    att.value='card';
     cardd.setAttributeNode(att);
     var identidad = document.createAttribute("id");
     identidad.value = "card";
@@ -162,27 +160,34 @@ const pAbilities = async (data, id) => {
 
 
     name.innerHTML = `<strong>${id} --  ${(data.forms[0].name).toUpperCase()}  </strong> `;
-    document.body.appendChild(name);
-
+    // document.body.appendChild(name);
+    cardd.appendChild(name)   
 
 
     imagen.innerHTML = ` <img src="${data.sprites.front_default}" alt="MDN"></img>`;
-    document.body.appendChild(imagen);
+    // document.body.appendChild(imagen);
+    cardd.appendChild(imagen)   
 
 
     experiencia.innerHTML = `<strong> Experiencia:</strong>  ${data.base_experience}  `;
-    document.body.appendChild(experiencia);
+    // document.body.appendChild(experiencia);
+    cardd.appendChild(experiencia)   
+
 
     listarB.innerHTML = `<strong> Type: </strong>`;
     data.types.forEach(types => listarB.innerHTML += ` ${(types.type.name)} ` + "  ")
-    document.body.appendChild(listarB);
+    // document.body.appendChild(listarB);
+    cardd.appendChild(listarB)   
 
 
     listarA.innerHTML = (`<strong> Ability: </strong>`);
     data.abilities.forEach(ability => listarA.innerHTML += (ability.ability.name) + `  `)
-    document.body.appendChild(listarA);
+    // document.body.appendChild(listarA);
+    cardd.appendChild(listarA)   
 
+    ;
 
+       
 
     var att = document.createAttribute("class");
     var attr = document.createAttribute("onclick");
@@ -203,16 +208,7 @@ const pAbilities = async (data, id) => {
       
        att.value =  this.disabled = true ;
     })();
-    ((att) => {
-        var att = document.createAttribute("class");
-        if(bloquearTodos.length==6){ 
-            var att = document.createAttribute("class");
-            att.value =  this.disabled = true ; }else{ 
-          
-            alert("sin bloquear");
-        }
-
-    })();`;
+   `;
     // boton.setAttributeNode(attrB);
 
     boton.setAttributeNode(attr);
@@ -242,7 +238,9 @@ const pAbilities = async (data, id) => {
 
 
 
-    document.body.appendChild(boton);
+    // document.body.appendChild(boton);
+    cardd.appendChild(boton)   
+
 
 
 }
@@ -285,28 +283,37 @@ const capturar = async (value) => {
 const contador = (value) => {
     alert("1")
     contadorr.push(1)
-    bloquearTodos.push(1)
-    // alert(bloquearTodos.length)
 
 
     
     if (contadorr.length <6 ) {
         //alert(contadorr.length)
    
-        
-    } else {
-        alert("ya son 6")
+
         var divModal = document.createElement("div");
         document.body.appendChild(divModal);
         divModal.innerHTML ==""
       
         var i = 0;
-        var text = "";
+        while (capturados[i]) {
+
+            alert("Id: "+ capturados[i].id+"   "+"nombre: "+capturados[i].name  + "    capturados totales: "+capturados.length )
+            i++;}
+       
+
+        
+    } else {
+        var divModal = document.createElement("div");
+        document.body.appendChild(divModal);
+        divModal.innerHTML ==""
+      
+        var i = 0;
         while (capturados[i]) {
 
             alert("Id: "+ capturados[i].id+"   "+"nombre: "+capturados[i].name  + "    capturados totales: "+capturados.length )
             i++;
- 
+            alert("ya son 6")
+
      
         }
 
