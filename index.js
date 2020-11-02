@@ -204,7 +204,7 @@ const pAbilities = async (data, id) => {
     attr.value = `capturar(value); ((att) => {
         var att = document.createAttribute("class");
  
-        alert("pasa");
+        // alert("pasa");
       
        att.value =  this.disabled = true ;
     })();
@@ -212,11 +212,6 @@ const pAbilities = async (data, id) => {
     // boton.setAttributeNode(attrB);
 
     boton.setAttributeNode(attr);
-
-    const change = (att) => {
-        alert("pasa")
-        //att.value = "btn btn-outline-secondary disabled";
-    }
 
 
     identidad.value = `id`;
@@ -281,7 +276,7 @@ const capturar = async (value) => {
 }
 //divModal.innerHTML="";
 const contador = (value) => {
-    alert("1")
+    // alert("1")
     contadorr.push(1)
 
 
@@ -312,7 +307,11 @@ const contador = (value) => {
 
             alert("Id: "+ capturados[i].id+"   "+"nombre: "+capturados[i].name  + "    capturados totales: "+capturados.length )
             i++;
-            alert("ya son 6")
+        //    if(capturados.length==6){
+        //        alert("acá van los links para ver en el listar")
+        //    }else{
+
+        //    }
 
      
         }
